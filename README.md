@@ -11,12 +11,12 @@ Aqui temos duas variedades do projeto, que muda a cor e o estilo do código, mas
 ##Página com divisão de HTML, CSS e JavaScript.
 
 O tema é mais escuro.
-![1](https://github.com/coutmilton/criaartigo/assets/69989716/12131998-d96d-4c3d-9dc6-c56b5e32e1df)
+![1](https://github.com/coutmilton/criaartigo/assets/69989716/6744244a-bd08-4b38-9c35-03887762d778)
 
 #Página WEB embutida
 
 O tema é mais colorido e está em um só arquivo HTML.
-![2](https://github.com/coutmilton/criaartigo/assets/69989716/d262c545-5d30-4ed0-8f89-ada2b8b2d39f)
+![2](https://github.com/coutmilton/criaartigo/assets/69989716/dac87215-0963-4873-8e7f-10ab88eb7362)
 
 ## Funcionalidades
 
