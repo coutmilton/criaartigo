@@ -4,6 +4,21 @@ Claro, aqui está um exemplo de um README para o código fornecido:
 
 Este é um projeto que consiste em uma página web interativa que permite aos usuários gerar código HTML personalizado para criar listas e detalhes com diferentes estilos de marcadores. O código HTML gerado pode ser usado para criar estruturas de lista com elementos numerados, marcadores especiais e detalhes.
 
+## Fotos do projeto
+
+Aqui temos duas variedades do projeto, que muda a cor e o estilo do código, mas ambos fazem a mesma coisa.
+
+##Página com divisão de HTML, CSS e JavaScript.
+
+O tema é mais escuro.
+![1](https://github.com/coutmilton/criaartigo/assets/69989716/12131998-d96d-4c3d-9dc6-c56b5e32e1df)
+
+#Página WEB embutida
+
+O tema é mais colorido e está em um só arquivo HTML.
+![2](https://github.com/coutmilton/criaartigo/assets/69989716/36f0ed1c-d612-4dc6-b0c2-4869a337fc20)
+
+
 ## Funcionalidades
 
 - Escolha o número de elementos de lista e detalhes.
@@ -43,11 +58,3 @@ Nome do Autor
 ## Contribuição
 
 Contribuições são bem-vindas! Sinta-se à vontade para fazer um fork deste repositório, criar uma branch com suas alterações e enviar um pull request.
-
-## Licença
-
-Este projeto está licenciado sob a [Licença XYZ](link-para-a-licenca).
-
----
-
-Sinta-se à vontade para personalizar este README de acordo com as informações específicas do projeto e suas preferências. Certifique-se de substituir as informações de autor, licença e quaisquer outros detalhes relevantes pelo conteúdo real do projeto.
