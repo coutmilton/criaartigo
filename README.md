@@ -51,10 +51,6 @@ A página possui um conjunto de estilos CSS que são aplicados para melhorar a a
 - CSS
 - JavaScript
 
-## Autor
-
-Nome do Autor
-
 ## Contribuição
 
 Contribuições são bem-vindas! Sinta-se à vontade para fazer um fork deste repositório, criar uma branch com suas alterações e enviar um pull request.
