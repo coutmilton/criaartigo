@@ -1,0 +1,586 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Gerar Código HTML</title>
+
+</head>
+
+<body>
+    <div class="main">
+        <header class="container">
+            <h2>Gerador HTML</h2>
+        </header>
+        <div class="containeroptions">
+            <div class="extraSum">
+                <p> Tags &lt;detail&gt; principal</p>
+                <div class="ptb" id="marginPTB">
+
+                    <label for="tagCount">Tags &lt;p&gt;:</label>
+                    <input type="number" id="tagCount" value="1" class="teclaEnt">
+                    <select id="select_bullet">
+                        <option value="op">-</option>
+                        <option value="op1">•</option>
+                        <option value="op2">■</option>
+                        <option value="op3">○</option>
+                        <option value="op4">☆</option>
+                        <option value="op5">»</option>
+                        <option value="op6">1</option>
+                        <option value="op7">a</option>
+                    </select>
+                </div>
+            </div>
+            <div class="extraSum">
+                <p> Tags extras</p>
+                <label for="ExtraSum">&lt;detail&gt;: </label>
+                <input type="number" id="ExtraSum" min="0" value="0" class="teclaEnt"><br>
+                <div class="ptb" id="marginPTB">
+                    <label for="tagExtra"> Tags &lt;p&gt;: </label>
+                    <input type="number" id="tagExtra" min="0" value="0" class="teclaEnt"><br>
+                    <select id="select_bullet_two">
+                        <option value="ot">-</option>
+                        <option value="ot1">•</option>
+                        <option value="ot2">■</option>
+                        <option value="ot3">○</option>
+                        <option value="ot4">☆</option>
+                        <option value="ot5">»</option>
+                        <option value="ot6">1</option>
+                        <option value="ot7">a</option>
+                    </select>
+                </div>
+            </div>
+        </div>
+        <div class="container_button">
+            <button class="buttonCSS" onclick="generateCode()">Gerar</button>
+            <button class="buttonCSS" onclick="codeCopy()">Copiar</button>
+            <button class="buttonCSS" onclick="codeDelete()">Deletar</button>
+            <button class="buttonCSS" onclick="codeCompilar()">Executar</button>
+        </div>
+        <div class="divideCode">
+            <textarea id="generatedCode" rows="10"></textarea>
+            <div id="htmlCode"></div>
+        </div>
+    </div>
+    <script>
+        // JavaScript aqui
+        const tagCountInput = document.getElementById('tagCount');
+        const hasExtraSum = document.getElementById('ExtraSum');
+        const summaryCountInput = document.getElementById('tagExtra');
+        const generateButton = document.getElementById('generateButton');
+        const generatedCodeTextArea = document.getElementById('generatedCode');
+        const htmlContainer = document.getElementById('htmlCode');
+        const hascopyCSS = document.getElementById('copyCSS');
+        const bullet = document.getElementById('select_bullet');
+        const bullet_two = document.getElementById('select_bullet_two');
+
+
+        var num = [
+            'a', 'b', 'c', 'd', 'e', 'f', 'g', 'h',
+            'i', 'j', 'k', 'l', 'm', 'n', 'o', 'p',
+            'q', 'r', 's', 't', 'u', 'v', 'x', 'z'
+        ];
+
+        const inputFields = document.querySelectorAll(".teclaEnt");
+        inputFields.forEach(input => {
+            input.addEventListener("keydown", function (event) {
+                if (event.key === "Enter") {
+                    generateCode();
+                }
+            });
+        });
+
+        bullet.addEventListener('change', bullet_select);
+
+        function bullet_select() {
+            if (bullet.value == "op") {
+                bp = '';
+            } else if (bullet.value == "op1") {
+                bp = '•';
+            } else if (bullet.value == "op2") {
+                bp = '■';
+            } else if (bullet.value == "op3") {
+                bp = '○';
+            } else if (bullet.value == "op4") {
+                bp = '☆';
+            } else if (bullet.value == "op5") {
+                bp = '»';
+            } else if (bullet.value == "op6") {
+                bp = '1'
+            } else if (bullet.value == "op7") {
+                bp = 'a';
+            }
+        }
+
+        bullet_two.addEventListener('change', bullet_select_two);
+
+        function bullet_select_two() {
+            if (bullet_two.value == "ot") {
+                bt = '';
+            } else if (bullet_two.value == "ot1") {
+                bt = '•';
+            } else if (bullet_two.value == "ot2") {
+                bt = '■';
+            } else if (bullet_two.value == "ot3") {
+                bt = '○';
+            } else if (bullet_two.value == "ot4") {
+                bt = '☆';
+            } else if (bullet_two.value == "ot5") {
+                bt = '»';
+            } else if (bullet_two.value == "ot6") {
+                bt = '1'
+            } else if (bullet_two.value == "ot7") {
+                bt = 'a';
+            }
+        }
+
+        function generateCode() {
+            const tagCount = parseInt(tagCountInput.value, 10);
+
+            let generateTags = `<details open="open">\n<summary style="font-weight:bold; font-family: arial, helvetica, sans-serif; font-size: 10pt;"> Titulo </summary>\n`;
+            let generateTagsExtra = `<details>\n<summary style="font-weight:bold; padding-left: 40px; font-family: arial, helvetica, sans-serif; font-size: 10pt;"> Titulo </summary>\n`;
+            let summaryCreate = '';
+            let summaryExtra = '';
+            let tagPextra = '';
+
+            bullet_select();
+            bullet_select_two();
+
+            const tagSumCount = parseInt(hasExtraSum.value, 10);
+            const tagPCount = parseInt(summaryCountInput.value, 10);
+
+            if (bp == '1') {
+                for (let i = 1; i <= tagCount; i++) {
+                    summaryCreate += '<p style="padding-left: 40px; font-family: arial, helvetica, sans-serif; font-size: 10pt;">' + i + '. Teste </p>\n';
+                    console.log(i);
+                }
+            } else if (bp == 'a') {
+                if (tagCount < 25) {
+                    for (let i = 0; i < tagCount; i++) {
+                        summaryCreate += '<p style="padding-left: 40px; font-family: arial, helvetica, sans-serif; font-size: 10pt;">' + num[i] + '. Teste </p>\n';
+                    }
+                } else {
+                    alert('Este bullet só suporta número menores que 25, selecione outro bullet ou escolha um número de 1 a 24 para o bullet "a"');
+                }
+            } else {
+                for (let i = 1; i <= tagCount; i++) {
+                    summaryCreate += '<p style="padding-left: 40px; font-family: arial, helvetica, sans-serif; font-size: 10pt;">' + bp + ' Teste </p>\n';
+                }
+            }
+
+            if (bt == '1') {
+                for (let i = 1; i <= tagPCount; i++) {
+                    tagPextra += '<p style="padding-left: 80px; font-family: arial, helvetica, sans-serif; font-size: 10pt;">' + i + '. Teste </p>\n';
+                    console.log(i);
+                }
+            } else if (bt == 'a') {
+                if (tagPCount < 25) {
+                    for (let i = 0; i < tagPCount; i++) {
+                        tagPextra += '<p style="padding-left: 80px; font-family: arial, helvetica, sans-serif; font-size: 10pt;">' + num[i] + '. Teste </p>\n';
+                    }
+                } else {
+                    alert('Este bullet só suporta número menores que 25, selecione outro bullet ou escolha um número de 1 a 24 para o bullet "a"');
+                }
+            } else {
+                for (let i = 1; i <= tagPCount; i++) {
+                    tagPextra += '<p style="padding-left: 80px; font-family: arial, helvetica, sans-serif; font-size: 10pt;">' + bt + ' Teste </p>\n';
+                }
+            }
+
+            if (tagPCount > 0) {
+                if (tagPCount < 0) {
+                    alert('Número de de sumários inferior a 0 enquanto tags extras de <p> é maior que zero');
+                }
+                else {
+                    for (let i = 0; i < tagSumCount; i++) {
+                        summaryExtra += `\n${generateTagsExtra}${tagPextra}</details>\n\n`
+                    }
+                }
+            }
+
+            generateTags += `${summaryCreate}${summaryExtra}</details>\n`;
+            htmlContainer.innerHTML = generateTags;
+
+
+            generatedCodeTextArea.value = `${generateTags}`
+
+            generatedCodeTextArea.select();
+            generatedCodeTextArea.setSelectionRange(0, 99999)
+            document.execCommand("copy");
+
+        }
+
+        function codeCopy() {
+            generatedCodeTextArea.select();
+            generatedCodeTextArea.setSelectionRange(0, 99999)
+            document.execCommand("copy");
+        }
+
+        function codeDelete() {
+            generatedCodeTextArea.value = '';
+        }
+
+        function codeCompilar() {
+            htmlContainer.innerHTML = generatedCodeTextArea.value;
+        }
+    </script>
+
+    <style>
+        /* Estilos CSS aqui */
+        @import url('https://fonts.googleapis.com/css2?family=Inconsolata&family=Roboto+Mono&display=swap');
+
+        /* Estilos CSS aqui */
+        body {
+            font-family: 'Roboto Mono', monospace;
+            background-image: url("https://i.pinimg.com/originals/71/9e/80/719e80760999b4c355a723224120eb07.png");
+            background-size: cover;
+            background-repeat: no-repeat;
+            background-attachment: fixed;
+            background-position: center;
+            width: 100%;
+            height: 100vh;
+            font-size: 1.2rem;
+            color: white;
+            margin: 0;
+            padding: 0;
+        }
+
+        /******** HEADER ********/
+
+        .container {
+            margin-bottom: 1rem;
+        }
+
+        .container h2 {
+            text-align: center;
+            color: white;
+        }
+
+        /******** MAIN ********/
+        .main {
+            max-width: 900px;
+            margin: 0 auto;
+            padding: 20px;
+            background-color: rgba(63, 65, 82, .5);
+            border-radius: 5px;
+            box-shadow: 0 2px 4px rgba(0, 0, 0, 1);
+        }
+
+        /******** TAGS ********/
+
+        .ptb {
+            display: flex;
+        }
+
+        .ptb label {
+            display: flex;
+            align-items: center;
+            margin-right: 10px;
+        }
+
+        .option_one {
+            display: flex;
+            margin-right: 10px;
+        }
+
+        .container_select {
+            display: flex;
+            justify-content: center;
+            align-items: center;
+        }
+
+        #sumTag {
+            width: 63px;
+            margin-left: -1.5px;
+            padding: .5rem 1rem;
+            border-right: none;
+            border-top: none;
+            border-left: none;
+            border-bottom: 2px solid black;
+            background-color: rgba(63, 65, 82, .3);
+            transition: .5s all;
+        }
+
+        #sumTag:hover {
+            background-color: rgba(247, 148, 219, 0.5);
+        }
+
+        #sumTag:focus {
+            background-color: white;
+            border-top-left-radius: 1rem;
+            border-bottom-left-radius: 1rem;
+            border-top-right-radius: 1rem;
+            border-bottom-right-radius: 1rem;
+            border-color: pink;
+            width: 73px;
+            outline: none;
+        }
+
+        #sumTag::-webkit-inner-spin-button,
+        #sumTag::-webkit-outer-spin-button {
+            -webkit-appearance: none;
+            appearance: none;
+        }
+
+        #tagCount {
+            width: 30px;
+            padding: .5rem 1rem;
+            border-right: none;
+            border-top: none;
+            border-left: none;
+            border-bottom: 2px solid black;
+            background-color: rgba(63, 65, 82, .3);
+            transition: .5s all;
+        }
+
+        #tagCount:hover {
+            background-color: rgba(247, 148, 219, 0.5);
+        }
+
+        #tagCount:focus {
+            background-color: white;
+            border-top-left-radius: 1rem;
+            border-bottom-left-radius: 1rem;
+            border-color: pink;
+            width: 40px;
+            outline: none;
+        }
+
+        #tagCount::-webkit-inner-spin-button,
+        #tagCount::-webkit-outer-spin-button {
+            -webkit-appearance: none;
+            appearance: none;
+        }
+
+        #select_bullet {
+            border-right: none;
+            border-top: none;
+            border-left: none;
+            background-color: rgba(63, 65, 82, .3);
+            border-bottom: 2px solid black;
+            transition: .5s all;
+        }
+
+        #select_bullet:hover {
+            background-color: rgb(226, 226, 226);
+        }
+
+        #select_bullet:focus {
+            background-color: rgb(226, 226, 226);
+            border-top-right-radius: 1rem;
+            outline: none;
+        }
+
+        #ExtraSum {
+            width: 63px;
+            margin-left: -1.5px;
+            padding: .5rem 1rem;
+            border-right: none;
+            border-top: none;
+            border-left: none;
+            border-bottom: 2px solid black;
+            background-color: rgba(63, 65, 82, .3);
+            transition: .5s all;
+        }
+
+        #ExtraSum:hover {
+            background-color: rgba(247, 148, 219, 0.5);
+        }
+
+        #ExtraSum:focus {
+            background-color: white;
+            border-top-left-radius: 1rem;
+            border-bottom-left-radius: 1rem;
+            border-top-right-radius: 1rem;
+            border-bottom-right-radius: 1rem;
+            border-color: pink;
+            width: 73px;
+            outline: none;
+        }
+
+        #ExtraSum::-webkit-inner-spin-button,
+        #ExtraSum::-webkit-outer-spin-button {
+            -webkit-appearance: none;
+            appearance: none;
+        }
+
+        #tagExtra {
+            width: 30px;
+            padding: .5rem 1rem;
+            border-right: none;
+            border-top: none;
+            border-left: none;
+            border-bottom: 2px solid black;
+            background-color: rgba(63, 65, 82, .3);
+            transition: .5s all;
+        }
+
+        #tagExtra:hover {
+            background-color: rgba(247, 148, 219, 0.5);
+        }
+
+        #tagExtra:focus {
+            background-color: white;
+            border-top-left-radius: 1rem;
+            border-bottom-left-radius: 1rem;
+            border-color: pink;
+            width: 40px;
+            outline: none;
+        }
+
+        #tagExtra::-webkit-inner-spin-button,
+        #tagExtra::-webkit-outer-spin-button {
+            -webkit-appearance: none;
+            appearance: none;
+        }
+
+        #select_bullet_two {
+            border-right: none;
+            border-top: none;
+            border-left: none;
+            background-color: rgba(63, 65, 82, .3);
+            border-bottom: 2px solid black;
+            transition: .5s all;
+        }
+
+        #select_bullet_two:hover {
+            background-color: rgb(226, 226, 226);
+        }
+
+        #select_bullet_two:focus {
+            background-color: rgb(226, 226, 226);
+            border-top-right-radius: 1rem;
+            outline: none;
+        }
+
+        #marginPTB {
+            margin-bottom: 30px;
+        }
+
+        /******** BUTTON ********/
+
+        .container_button {
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            margin-bottom: 30px;
+            gap: 10px;
+        }
+
+        .buttonCSS {
+            font-weight: bold;
+            --c: pink;
+            /* the color*/
+
+            box-shadow: 0 0 0 .1em inset var(--c);
+            --_g: linear-gradient(var(--c) 0 0) no-repeat;
+            background:
+                var(--_g) calc(var(--_p, 0%) - 100%) 0%,
+                var(--_g) calc(200% - var(--_p, 0%)) 0%,
+                var(--_g) calc(var(--_p, 0%) - 100%) 100%,
+                var(--_g) calc(200% - var(--_p, 0%)) 100%;
+            background-size: 50.5% calc(var(--_p, 0%)/2 + .5%);
+            outline-offset: .1em;
+            transition: background-size .4s, background-position 0s .4s;
+            border-radius: 5px;
+            cursor: pointer;
+            padding: 10px 15px;
+            width: 100px;
+        }
+
+        .buttonCSS:hover {
+            --_p: 100%;
+            transition: background-position .4s, background-size 0s;
+            border-radius: 10px;
+        }
+
+        .buttonCSS:active {
+            box-shadow: 0 0 9e9q inset #0009;
+            border-radius: 10px;
+            background-color: var(--c);
+            color: #fff;
+        }
+
+
+        #generatedCode {
+            width: 40%;
+            height: 200px;
+        }
+
+        #htmlCode {
+            margin: 1px solid black;
+        }
+
+        #htmlCode {
+            border: 1px solid black;
+            width: 40%;
+        }
+
+        .divideCode {
+            display: flex;
+            width: 100%;
+            gap: 2rem;
+            justify-content: space-between;
+        }
+
+        #generatedCode {
+            font-family: 'Inconsolata', monospace;
+            font-size: 1rem;
+            height: 250px;
+            padding: 1rem;
+            background-color: pink;
+            color: black;
+        }
+
+        button {
+            display: block;
+            margin-top: 10px;
+        }
+
+        #htmlCode {
+            background-color: pink;
+            font-size: 1rem;
+            color: black;
+            padding: 1rem;
+        }
+
+        .containeroptions {
+            display: flex;
+            justify-content: space-evenly;
+        }
+
+        /******** RESPONSIVO ********/
+
+        @media (max-width: 535px) {
+
+            h2,
+            p,
+            button,
+            textarea,
+            label,
+            input {
+                font-size: 0.8rem;
+            }
+
+            #marginPTB {
+                margin-bottom: 10px;
+            }
+
+            .containeroptions {
+                flex-direction: column;
+            }
+
+            .buttonCSS {
+                width: 80px;
+                padding: 5px 10px;
+            }
+
+            #ExtraSum {
+                margin-left: 1.5px;
+            }
+        }
+    </style>
+</body>
+
+</html>
