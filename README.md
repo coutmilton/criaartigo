@@ -16,8 +16,7 @@ O tema é mais escuro.
 #Página WEB embutida
 
 O tema é mais colorido e está em um só arquivo HTML.
-![2](https://github.com/coutmilton/criaartigo/assets/69989716/36f0ed1c-d612-4dc6-b0c2-4869a337fc20)
-
+![2](https://github.com/coutmilton/criaartigo/assets/69989716/d262c545-5d30-4ed0-8f89-ada2b8b2d39f)
 
 ## Funcionalidades
 
